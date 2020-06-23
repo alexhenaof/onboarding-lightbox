@@ -7,48 +7,50 @@
     <title>Lighbox onboarding</title>
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 <body class="font-sans">
 
 <div class="h-screen w-full bg-cool-gray-800 relative flex justify-center items-center">
 
-    <div class="modal w-full max-w-md bg-white text-center rounded-md py-12 px-8 min-h-cardbox transition transform ease-in relative">
-
+    <div x-data="{ current: 'step-1' }"
+        class="flex flex-col justify-between w-full max-w-md bg-white text-center rounded-md py-12 px-8 min-h-112 transition transform ease-in">
         <div class="content transition duration-300 ease-in-out opacity-100" id="modal-content">
-            <!--<img src="img/ico-0.svg" alt="icons" title="icons" class="inline-block pb-6 md:w-20" id="content-image">-->
-            <div id="content-image">
-                <svg viewBox="0 0 104 106" fill="none" xmlns="http://www.w3.org/2000/svg" class="inline-block h-24 w-24">
-                    <g clip-path="url(#clip0)">
-                        <path d="M37.9009 77.2878C17.0099 77.2878 0.00811929 59.9575 0 38.648C0 28.3772 3.92162 18.6948 11.0504 11.3738C18.2197 4.04455 27.7517 0 37.8927 0C48.0418 0 57.5577 4.02004 64.727 11.3248C71.8963 18.6295 75.8423 28.3282 75.8423 38.6398C75.8423 48.9105 71.9207 58.5929 64.7919 65.8976C57.6064 73.2432 48.0662 77.2959 37.9252 77.2959L37.9009 75.6618L37.9252 74.0276C47.1893 74.0276 55.9094 70.3262 62.4779 63.6098C69.0059 56.9261 72.5946 48.0607 72.5946 38.648C72.5946 29.2025 68.9815 20.3208 62.4211 13.6289C55.8607 6.94519 47.165 3.26833 37.9333 3.26833C28.6286 3.26833 19.9247 6.96153 13.3725 13.6698C6.83644 20.3698 3.24772 29.2434 3.24772 38.648C3.25584 58.1517 18.8043 74.0113 37.9009 74.0113V77.2878Z" fill="#97A6BA"/>
-                        <path d="M37.9008 68.1691C30.1713 68.1691 22.8964 65.0887 17.424 59.5081C11.9516 53.9274 8.93933 46.5165 8.93933 38.648C8.93933 30.7958 11.9435 23.3931 17.3915 17.8206C22.872 12.2072 30.155 9.11047 37.909 9.11047C45.6629 9.11047 52.9378 12.1909 58.4102 17.7797C63.8826 23.3522 66.903 30.7631 66.903 38.6398C66.9111 46.492 63.9069 53.8865 58.4589 59.459C52.9702 65.0806 45.6791 68.1691 37.9252 68.1691H37.9008ZM37.9252 12.3706C31.0319 12.3706 24.569 15.1242 19.7055 20.1002C14.8583 25.0599 12.187 31.6456 12.187 38.6398C12.187 45.6422 14.8664 52.236 19.7299 57.2039C24.5933 62.1636 31.04 64.8926 37.9008 64.8926V66.5268L37.9252 64.8926C44.8022 64.8926 51.2814 62.1472 56.1449 57.1549C61.0002 52.1952 63.6634 45.6177 63.6634 38.6235C63.6552 31.6211 60.9759 25.0272 56.1043 20.0675C51.2408 15.1079 44.786 12.3706 37.9252 12.3706Z" fill="#97A6BA"/>
-                        <path d="M22.328 38.6398H19.0803C19.0803 33.533 21.029 28.7286 24.569 25.1007C28.1333 21.4484 32.875 19.4384 37.9171 19.4384V22.7067C33.7519 22.7067 29.8384 24.3735 26.883 27.3967C23.9438 30.4036 22.328 34.3991 22.328 38.6398Z" fill="#97A6BA"/>
-                        <path d="M93.3475 106C91.9429 106 90.5545 105.714 89.2067 105.142L88.9062 105.019L63.4279 79.0281L77.5311 64.6475L103.042 90.6633L103.164 90.9657C104.56 94.4056 104.195 98.1315 102.165 101.179C100.143 104.202 96.8469 106 93.3475 106ZM90.7574 102.25C93.9808 103.467 97.5533 102.233 99.4695 99.3571C100.833 97.3144 101.118 94.8305 100.273 92.4936L77.5392 69.3048L67.9991 79.0281L90.7574 102.25Z" fill="#97A6BA"/>
-                        <path d="M81.7317 74.0412L72.6095 83.3494L74.9219 85.6444L84.0441 76.3363L81.7317 74.0412Z" fill="#97A6BA"/>
-                        <path d="M65.4734 64.4157L63.1613 66.7111L69.5991 73.2782L71.9111 70.9829L65.4734 64.4157Z" fill="#97A6BA"/>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0">
-                            <rect width="104" height="106" fill="white"/>
-                        </clipPath>
-                    </defs>
-                </svg>
+            <div x-show.transition.in="current === 'step-1'">
+                <x-icon-glass class="inline-block h-24 w-24"></x-icon-glass>
+                <h2 class="text-xl text-center font-bold text-gray-800 pt-8 pb-4">Verificando identidad...</h2>
+                <p class="text-sm sm:text-lg w-full text-gray-700 block m-auto px-0">
+                    Porfavor espera mientras terminamos el proceso.
+                </p>
             </div>
-            <h2 id="content-title" class="text-xl text-center font-bold text-gray-800 pt-8 pb-4">Verificando identidad...</h2>
-            <p id="content-info" class="text-sm sm:text-lg w-full text-gray-700 block m-auto px-0">Porfavor espera mientras terminamos el
-                proceso.</p>
+
+            <div x-show.transition.in="current === 'step-2'">
+                <x-icon-mail class="inline-block h-24 w-24"></x-icon-mail>
+                <h2 class="text-xl text-center font-bold text-gray-800 pt-8 pb-4">Hemos enviado un correo...</h2>
+                <p class="text-sm sm:text-lg w-full text-gray-700 block m-auto px-0">
+                    para verificar tu idendad, por favor revisa tu bandeja de entrada y confirma la identidad <br><br>
+                    No he recibido el correo.
+                    <a href='#' target='_blank' class='text-orange-500'>Reenviar</a>
+                </p>
+            </div>
         </div>
 
         <div class="mt-8">
-            <ul id="navi" class="absolute bottom-12 transform left-1/2 -translate-x-1/2">
-                <li id="0"
-                    class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 w-3 h-3 bg-cool-gray-800 cursor-pointer m-1 align-middle"></li>
-                <li id="1" class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 cursor-pointer m-1 align-middle"></li>
-                <li id="2" class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 cursor-pointer m-1 align-middle"></li>
-                <li id="3" class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 cursor-pointer m-1 align-middle"></li>
-                <li id="4" class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 cursor-pointer m-1 align-middle"></li>
-                <li id="5" class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 cursor-pointer m-1 align-middle"></li>
-                <li id="6" class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 cursor-pointer m-1 align-middle"></li>
-            </ul>
+            <div>
+                <button
+                    @click="current = 'step-1'"
+                    :class="{ 'bg-cool-gray-800 w-3 h-3': current === 'step-1' }"
+                    class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 cursor-pointer m-1 align-middle"></button>
+                <button
+                    @click="current = 'step-2'"
+                    :class="{ 'bg-cool-gray-800 w-3 h-3': current === 'step-2' }"
+                    class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 cursor-pointer m-1 align-middle"></button>
+                <button class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 cursor-pointer m-1 align-middle"></button>
+                <button class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 cursor-pointer m-1 align-middle"></button>
+                <button class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 cursor-pointer m-1 align-middle"></button>
+                <button class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 cursor-pointer m-1 align-middle"></button>
+                <button class="rounded-full inline-block w-2 h-2 bg-cool-gray-400 cursor-pointer m-1 align-middle"></button>
+            </div>
         </div>
     </div>
 
@@ -92,27 +94,6 @@
             info: "Puedes continuar con el proceso"
         }
     ];
-    var navi = document.querySelectorAll("#navi li");
-    for (var i = 0; i < navi.length; i++) {
-        navi[i].addEventListener("click", myScript);
-    }
-
-    function myScript(e) {
-        for (var i = 0; i < navi.length; i++) {
-            navi[i].classList.add("bg-500", "w-2", "h-2");
-            navi[i].classList.remove("bg-cool-gray-800", "w-3", "h-3");
-            document.getElementById("modal-content").classList.remove("opacity-100");
-            document.getElementById("modal-content").classList.add("opacity-0");
-            this.classList.add("bg-cool-gray-800", "w-3", "h-3");
-        }
-
-        setTimeout(() => {
-            document.getElementById("modal-content").classList.add("opacity-100");
-            document.getElementById("content-image").innerHTML = content[this.id].image;
-            document.getElementById("content-title").innerHTML = content[this.id].title;
-            document.getElementById("content-info").innerHTML = content[this.id].info;
-        }, 700);
-    }
 </script>
 
 </body>

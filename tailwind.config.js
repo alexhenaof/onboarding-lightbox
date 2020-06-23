@@ -9,15 +9,8 @@ module.exports = {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
             },
             minHeight: {
-                'cardbox': ['450px'],
+                '112': '28rem',
             },
-            inset: {
-                '12': '3rem',
-                '1/2': '50%',
-            },
-            colors:{
-                'orangeptp': '#FF5A1F',
-            }
         },
     },
     variants: {},
